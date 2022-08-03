@@ -1,0 +1,8 @@
+asyncio
+websockets
+sounddevice
+wave
+vosk
+uvicorn
+fastapi
+argparse
