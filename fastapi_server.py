@@ -123,7 +123,7 @@ if __name__ == "__main__":
          
            
     if len(sys.argv) == 1: 
-        path = 'vosk-model-en-us-0.22'
+        path = 'vosk-model-en-us-0.22-lgraph'
     else:
         args.model_path = sys.argv[1]
         path = args.model_path

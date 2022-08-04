@@ -8,6 +8,7 @@ import websockets
 import logging
 import sounddevice as sd
 import argparse
+from translate import transform,transcript
 
 def int_or_str(text):
     """Helper function for argument parsing."""
@@ -31,10 +32,16 @@ async def run_test():
             while True:
                 data = await audio_queue.get()
                 await websocket.send(data)
-                print (await websocket.recv())
+                # print (await websocket.recv())
+                data = transcript(await websocket.recv())
+                if data: print(data)
+                if len(data) <8: 
+                    if "stop"==data: break
+                if "stop" in data[:6]: break
 
-            await websocket.send('{"eof" : 1}')
-            print (await websocket.recv())
+            # await websocket.send('{"eof" : 1}')
+            print(data)
+            # print (await websocket.recv())
 
 async def main():
 
